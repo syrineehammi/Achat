@@ -31,7 +31,7 @@ services:
       image: prom/prometheus
       container_name: prometheuss
       volumes:
-        - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+        - ./var/lib/jenkins/workspace/Achatpipeline/prometheus/prometheus.yml
       ports:
         - "9091:9090"
 
