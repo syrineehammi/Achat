@@ -10,6 +10,13 @@ services:
       - 3306:3306
     volumes:
       - db:/var/lib/mysql
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheuss
+    volumes:
+      - /var/lib/jenkins/workspace/Achatpipeline/prometheus/prometheus.yml
+    ports:
+      - "9091:9091"
   app-achat:
     depends_on:
       - mysqldb
@@ -27,13 +34,7 @@ services:
       }'
     stdin_open: true
     tty: true
-  prometheus:
-      image: prom/prometheus
-      container_name: prometheuss
-      volumes:
-        - /var/lib/jenkins/workspace/Achatpipeline/prometheus/prometheus.yml
-      ports:
-        - "9091:9090"
+
 
 volumes:
   db:
